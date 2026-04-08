@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+name: multi-job
+on: workflow_dispatch
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build phase
+        run: echo "build phase."
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test phase
+        run: echo "test phase."
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy phase
+        run: echo "deploy phase."
+      
+        
+    
+    

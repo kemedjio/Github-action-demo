@@ -1,0 +1,13 @@
+name: Github-action-demo
+on: workflow_dispatch
+jobs:
+  action-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the code
+        uses: actions/checkout@v4
+      - name: Print index.html
+        run: cat index.html
+        
+
+

@@ -1,9 +1,9 @@
 name: Hello World
-on: workflow_dispatch
+on: push
 jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
       - name: hello
-        run: echo "Welcome to GitHub Action ${{ vars.My_name }}."
+        run: echo "Welcome to GitHub Action ${{ secrets.Docker_pass }}."
         

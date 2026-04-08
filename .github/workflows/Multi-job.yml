@@ -9,11 +9,13 @@ jobs:
         run: echo "build phase."
   Test:
     runs-on: ubuntu-latest
+    needs: Build
     steps:
       - name: test phase
         run: echo "test phase."
   Deploy:
     runs-on: ubuntu-latest
+    needs: Test
     steps:
       - name: deploy phase
         run: echo "deploy phase."

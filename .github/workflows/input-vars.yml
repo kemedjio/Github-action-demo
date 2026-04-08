@@ -1,0 +1,14 @@
+name: defining input variables
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Choose the env to deploy
+        required: true
+        default: dev
+jobs:
+  input-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy the APP
+        run: "Deploying the APP to ${{ inputs.environment }}"

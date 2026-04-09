@@ -1,0 +1,12 @@
+name: Demo Build and Deploy
+on: 
+  pull_request:
+    types: 
+      - opened
+      - synchronize
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build on pull request
+        run: echo "Building the application."

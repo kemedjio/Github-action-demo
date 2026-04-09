@@ -1,0 +1,10 @@
+name: Or Condition
+on: push
+jobs:
+  or-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run if user anicet
+        if: github.actor == 'anicet' || github.actor == 'kemedjio'
+        run: echo "Run this workflow if user is anicet or kemedjio"
+        

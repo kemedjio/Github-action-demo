@@ -1,0 +1,40 @@
+name: If examples with functions
+on: 
+  push:
+    branches:
+      - main
+      - develop
+      - feature/if-example
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref_name,'feature') && github.event_name == 'push'
+    steps:
+      - name: Perform code quality
+        run: echo "performing code quality."
+  dev_deploy:
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'develop' && github.event_name == 'push'
+    steps:
+      - name: Deploy to dev environment
+        run: echo "deploying the application to dev"
+  pro_deploy:
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'main' && github.event_name == 'push'
+    steps:
+      - name: Deploy the application to prod env
+        run: echo "Deploying the application to prod env"
+  success_notification:
+    needs: [quality-checks, dev_deploy, pro_deploy]
+    runs-on: ubuntu-latest
+    if: always() && !failure()
+    steps:
+      - name: Notify the team
+        run: echo "Success email sent to team."
+  failure_notify:
+    runs-on: ubuntu-latest
+    needs: [quality-checks, dev_deploy, pro_deploy]
+    if: failure()
+    steps:
+      - name: Send failed deployment
+        run: echo "Failure email sent to the team."
